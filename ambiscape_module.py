@@ -14,15 +14,25 @@ def call_mongodb():
 
 def create_experiences_menu(db):
     menu = exp.get_all_experiences(db)
-    return menu
+    if menu[0] == 0:
+        return menu
+    else:
+     return []
 
 
 def get_playlist_from_experience(db, experience_name):
-    playlist_name = exp.get_playlist(db, experience_name)
-    return sound.get_playlist(playlist_name)
+    result = exp.get_playlist(db, experience_name)
+    if result[0] == 0:
+        playlist_name = result[1]
+        return sound.get_playlist(playlist_name)
+    else:
+        return 1
 
 
 # TODO
 # def get_color_scheme_from_experience(db, experience_name):
 #   color_scheme = exp.get_color(db, experience_name)
 #   return color.get_playlist(playlist_name)
+
+if __name__ == '__main__':
+    get_playlist_from_experience(call_mongodb(), "melancholy")
