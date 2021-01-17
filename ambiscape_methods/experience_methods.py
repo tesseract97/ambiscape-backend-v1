@@ -8,6 +8,7 @@ def get_all_experiences(db):
     except Exception:
         return [1, []]
 
+
 def get_exp_params(db, experience_name):
    try:
        experience_collect = db.get_collection('experiences')
@@ -16,6 +17,7 @@ def get_exp_params(db, experience_name):
    except Exception:
        return[1, []]
 
+
 def get_playlist(db, experience_name):
     try:
         experience_collect = db.get_collection('experiences')
@@ -23,6 +25,7 @@ def get_playlist(db, experience_name):
         return [0, playlist]
     except Exception:
         return[1, []]
+
 
 def get_color_scheme(db, experience_name):
     try:
