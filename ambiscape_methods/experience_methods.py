@@ -5,17 +5,19 @@ def get_all_experiences(db):
         for ex in experience_collect.find():
             experiences.append(ex['experience_name'])
         return [0, experiences]
+    # TODO
+    # fix exception clauses
     except Exception:
         return [1, []]
 
 
 def get_exp_params(db, experience_name):
-   try:
-       experience_collect = db.get_collection('experiences')
-       params = list(experience_collect.find_one({"experience_name": experience_name}).values())[1:3]
-       return [0, params]
-   except Exception:
-       return[1, []]
+    try:
+        experience_collect = db.get_collection('experiences')
+        params = list(experience_collect.find_one({"experience_name": experience_name}).values())[1:3]
+        return [0, params]
+    except Exception:
+        return[1, []]
 
 
 def get_playlist(db, experience_name):
